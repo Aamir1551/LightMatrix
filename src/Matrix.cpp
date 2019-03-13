@@ -4,6 +4,7 @@
 
 
 //TODO functions need to be refactored and need to recftify functions for Tvalues
+//TODO Add comments & use constants as params (const par, const par*, ...)
 
 class Matrix{
     
