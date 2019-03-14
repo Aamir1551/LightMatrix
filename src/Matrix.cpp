@@ -17,14 +17,14 @@ void Matrix::initMatrix(int rows, int columns) {
     
     }
     
-    Matrix::Matrix(int rows, int columns, double val = 0) {
+Matrix::Matrix(int rows, int columns, double val = 0) {
     initMatrix(rows, columns);
     if(val != 0) {
         for(int i = 0;i<NumElements;i++) {
             this->currentVals[i] = val;
-            }
         }
     }
+}
         Matrix static makeMatrix(int rows, int columns, double val = 0) {
             return *(new Matrix(rows, columns, val));
         }
