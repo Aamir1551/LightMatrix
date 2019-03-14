@@ -5,6 +5,7 @@
 
 //TODO functions need to be refactored and need to recftify functions for Tvalues
 //TODO Add comments & use constants as params (const par, const par*, ...)
+//TODO add statick methods to add/multiply/subtract matrices that can take a matrix as a const parameter (and pointer as const as well)
 
 
 void Matrix::initMatrix(int rows, int columns) {
