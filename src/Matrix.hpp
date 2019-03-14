@@ -20,7 +20,7 @@ class Matrix{
 
         Matrix(int rows, int columns, double val = 0);
 
-        Matrix static makeMatrix(int rows, int columns, double val = 0);
+        //~Matrix();
 
         Matrix(double *a, int rows, int columns);
 
@@ -29,15 +29,15 @@ class Matrix{
 
         void transpose();
 
-        Matrix clone();
+        Matrix* clone();
 
         double hashGet(int i);
 
-        Matrix operator + (Matrix x);
+        Matrix* operator + (Matrix *x);
 
-        Matrix operator * (double d);
+        Matrix* operator * (double d);
 
-        Matrix operator - (Matrix x);
+        Matrix* operator - (Matrix *x);
 
         void printAll();
 
@@ -45,7 +45,7 @@ class Matrix{
 
         void set(int i, int j,double d);
 
-        static Matrix* matMul(Matrix x, Matrix y);
+        static Matrix* matMul(Matrix *x, Matrix *y);
 };
 
 #endif
