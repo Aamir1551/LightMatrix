@@ -1,43 +1,30 @@
+#include "Matrix.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
-
 //TODO functions need to be refactored and need to recftify functions for Tvalues
 //TODO Add comments & use constants as params (const par, const par*, ...)
 
-class Matrix{
+
+void Matrix::initMatrix(int rows, int columns) {
+    Nvalues = new double[rows * columns];
+    Tvalues = new double[rows * columns];
+    currentVals = Nvalues;
+    this->rows = rows;
+    this->columns = columns;
+    this->NumElements = rows * columns;
     
-    private:
-        int rows;
-        int columns;
-        int NumElements;
-
-        void initMatrix(int rows, int columns) {
-            Nvalues = new double[rows * columns];
-            Tvalues = new double[rows * columns];
-            currentVals = Nvalues;
-
-            this->rows = rows;
-            this->columns = columns;
-            this->NumElements = rows * columns;
-        }
-
-    public:
-
-        double *Nvalues;
-        double *Tvalues;
-        double *currentVals;
-
-        Matrix(int rows, int columns, double val = 0) {
-            initMatrix(rows, columns);
-            if(val != 0) {
-                for(int i = 0;i<NumElements;i++) {
-                    this->currentVals[i] = val;
-                }
+    }
+    
+    Matrix::Matrix(int rows, int columns, double val = 0) {
+    initMatrix(rows, columns);
+    if(val != 0) {
+        for(int i = 0;i<NumElements;i++) {
+            this->currentVals[i] = val;
             }
         }
-
+    }
         Matrix static makeMatrix(int rows, int columns, double val = 0) {
             return *(new Matrix(rows, columns, val));
         }
