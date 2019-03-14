@@ -2,7 +2,6 @@
 #define MATRIX_H
 
 
-
 class Matrix{
     
     private:
@@ -18,11 +17,11 @@ class Matrix{
         double *Tvalues;
         double *currentVals;
 
-        Matrix(int rows, int columns, double val = 0);
+        Matrix(int rows, int columns, double val);
 
         //~Matrix();
 
-        Matrix(double *a, int rows, int columns);
+        Matrix(double * const a, int rows, int columns);
 
 
         double get(int i, int j);
@@ -33,19 +32,19 @@ class Matrix{
 
         double hashGet(int i);
 
-        Matrix* operator + (Matrix *x);
+        Matrix* operator + ( Matrix *const x);
 
         Matrix* operator * (double d);
 
-        Matrix* operator - (Matrix *x);
+        Matrix* operator - ( Matrix * const x);
 
         void printAll();
 
-        static void printAll(Matrix *x);
+        static void printAll( Matrix *const x);
 
         void set(int i, int j,double d);
 
-        static Matrix* matMul(Matrix *x, Matrix *y);
+        static Matrix* matMul( Matrix *const x,  Matrix *const y);
 };
 
 #endif

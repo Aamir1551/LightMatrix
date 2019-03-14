@@ -2,8 +2,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<iostream>
 
 int main(int argc, char* argv[]) {
+
+    //to compile run script: g++ main.cpp Matrix.cpp && ./a.out
 
     Matrix *a = new Matrix(2, 2, 10);
     Matrix *b = new Matrix(2, 2, 8);

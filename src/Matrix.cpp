@@ -16,7 +16,7 @@ void Matrix::initMatrix(int rows, int columns) {
     this->NumElements = rows * columns;
 }
     
-Matrix::Matrix(int rows, int columns, double val = 0) {
+Matrix::Matrix(int rows, int columns, double val) {
     initMatrix(rows, columns);
     if(val != 0) {
         for(int i = 0;i<NumElements;i++) {
@@ -25,7 +25,7 @@ Matrix::Matrix(int rows, int columns, double val = 0) {
     }
 }
 
-Matrix::Matrix(double *a, int rows, int columns) {
+Matrix::Matrix(double * const a, int rows, int columns) {
     initMatrix(rows, columns);
     memcpy(this->Nvalues, a, sizeof(*a) * rows * columns);
     //also need to implement corresponding function for Tvalues
@@ -44,7 +44,7 @@ void Matrix::transpose() {
 }
 
 Matrix* Matrix::clone() {
-    Matrix *c = new Matrix(rows, columns);
+    Matrix *c = new Matrix(rows, columns, 0);
     for(int i = 0;i<NumElements;i++) {
         c->Nvalues[i] = this->Nvalues[i];
         c->Tvalues[i] = this->Tvalues[i];
@@ -64,12 +64,12 @@ double Matrix::hashGet(int i) {
     return this->currentVals[i/columns % rows, i % columns];
 }
 
-Matrix* Matrix::operator + (Matrix *x) {
+Matrix* Matrix::operator + (Matrix * const x) {
     if(x->rows != this -> rows || x->columns != this->columns) {
         printf("Matrix shapes do not conform for Matrix addidtion\n");
         exit(EXIT_FAILURE);
     }
-    Matrix* c = new Matrix(rows, columns);
+    Matrix* c = new Matrix(rows, columns, 0);
     for(int i = 0;i<this->NumElements;i++) {
         c->currentVals[i] = this->currentVals[i] + x->currentVals[i]; 
     }
@@ -77,14 +77,14 @@ Matrix* Matrix::operator + (Matrix *x) {
 }
 
 Matrix* Matrix::operator * (double d) {
-    Matrix* c = new Matrix(rows, columns);
+    Matrix* c = new Matrix(rows, columns, 0);
     for(int i = 0;i<this->NumElements;i++) {
         c->currentVals[i] = this->currentVals[i] * d; 
     }
     return c;
 }
 
-Matrix* Matrix::operator - (Matrix *x) {
+Matrix* Matrix::operator - ( Matrix * const x) {
     return *this + ( *x * -1) ;
 } 
 
@@ -98,7 +98,7 @@ void Matrix::printAll() {
     printf("\n");
 }
 
-void Matrix::printAll(Matrix *x) {
+void Matrix::printAll(Matrix * const x) {
     x->printAll();
 }
 
@@ -107,7 +107,7 @@ void Matrix::set(int i, int j,double d) {
     this->Tvalues[j*rows + i] = d;
 }
 
-Matrix* Matrix::matMul(Matrix *x, Matrix *y) {
+Matrix* Matrix::matMul(Matrix * const x, Matrix * const y) {
     //WILL BE REIMPLEMTED USING THE STRASSEN ALGO 
     if(x->columns != y->rows) {
         printf("shapes do not conform for Matrix Multiplication \n");
